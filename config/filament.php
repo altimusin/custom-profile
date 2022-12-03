@@ -1,5 +1,6 @@
 <?php
 
+use App\Filament\Pages\MyProfile;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Http\Middleware\MirrorConfigToSubpackages;
@@ -106,6 +107,7 @@ return [
         'path' => app_path('Filament/Pages'),
         'register' => [
             Pages\Dashboard::class,
+            MyProfile::class
         ],
     ],
 

@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Filament\Pages\MyProfile;
+use Filament\Facades\Filament;
+use Filament\Navigation\UserMenuItem;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,6 +14,10 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    protected array $pages = [
+        MyProfile::class,
+    ];
+
     public function register()
     {
         //
@@ -23,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Filament::registerUserMenuItems([
+            'account' => UserMenuItem::make()->url(MyProfile::getUrl()),
+        ]);
     }
 }
